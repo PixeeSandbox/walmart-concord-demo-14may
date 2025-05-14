@@ -28,7 +28,7 @@
             <repositories>
                 <repository>
                     <id>central</id>
-                    <url>http://central</url>
+                    <url>https://central</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -40,7 +40,7 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>central</id>
-                    <url>http://central</url>
+                    <url>https://central</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
