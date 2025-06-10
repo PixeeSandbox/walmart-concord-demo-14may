@@ -114,7 +114,7 @@ public final class SsoCookies {
                 .filter(c -> name.equals(c.getName()))
                 .findFirst()
                 .map(Cookie::getValue)
-                .orElse(null);
+    .orElse(null);
     }
 
     private static void remove(String name, HttpServletResponse resp) {
@@ -123,6 +123,7 @@ public final class SsoCookies {
 
     private static Cookie expiredCookie(String name) {
         Cookie cookie = new Cookie(name, "");
+        cookie.setHttpOnly(true);
         cookie.setMaxAge(0);
         cookie.setPath("/");
         return cookie;
