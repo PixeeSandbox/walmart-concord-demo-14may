@@ -159,7 +159,7 @@ public final class IOUtils {
             while (entries.hasMoreElements()) {
                 ZipArchiveEntry e = entries.nextElement();
 
-                Path p = targetDir.resolve(e.getName());
+                Path p = targetDir.resolve(sanitizeZipFilename(e.getName()));
                 if (skipExisting && Files.exists(p)) {
                     continue;
                 }
@@ -360,5 +360,15 @@ public final class IOUtils {
     }
 
     private IOUtils() {
+    }
+    
+    static String sanitizeZipFilename(String entryName) {
+        if (entryName == null || entryName.trim().isEmpty()) {
+            return entryName;
+        }
+        while (entryName.contains("../") || entryName.contains("..\\")) {
+            entryName = entryName.replace("../", "").replace("..\\", "");
+        }
+        return entryName;
     }
 }
