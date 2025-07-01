@@ -75,6 +75,7 @@ public final class SsoCookies {
      */
     public static void addFromCookie(String url, HttpServletResponse response) {
         Cookie cookie = new Cookie(POST_LOGIN_URL_COOKIE, url);
+        cookie.setSecure(true);
         cookie.setMaxAge(Integer.MAX_VALUE);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
@@ -123,6 +124,7 @@ public final class SsoCookies {
 
     private static Cookie expiredCookie(String name) {
         Cookie cookie = new Cookie(name, "");
+        cookie.setSecure(true);
         cookie.setMaxAge(0);
         cookie.setPath("/");
         return cookie;
